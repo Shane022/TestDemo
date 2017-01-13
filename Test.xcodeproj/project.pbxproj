@@ -14,11 +14,11 @@
 		01299B871E27593900A0A0D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299B7E1E27593900A0A0D7 /* main.m */; };
 		01299B881E27593900A0A0D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01299B7F1E27593900A0A0D7 /* Main.storyboard */; };
 		01299B891E27593900A0A0D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299B811E27593900A0A0D7 /* ViewController.m */; };
-		01299B8A1E27593900A0A0D7 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 01299B821E27593900A0A0D7 /* Base.lproj */; };
 		01299B941E275B4900A0A0D7 /* TPGCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299B931E275B4900A0A0D7 /* TPGCollectionViewDataSource.m */; };
 		01299B971E275B5F00A0A0D7 /* TPGCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299B961E275B5F00A0A0D7 /* TPGCollectionViewDelegate.m */; };
 		01299B9E1E275E6100A0A0D7 /* TPGTestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299B9D1E275E6100A0A0D7 /* TPGTestCollectionViewCell.m */; };
 		01299BA11E27673400A0A0D7 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299BA01E27673400A0A0D7 /* SecondViewController.m */; };
+		01299C0E1E2862E200A0A0D7 /* TPGHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01299C0D1E2862E200A0A0D7 /* TPGHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,6 @@
 		01299B7F1E27593900A0A0D7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Test/Main.storyboard; sourceTree = "<group>"; };
 		01299B801E27593900A0A0D7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Test/ViewController.h; sourceTree = "<group>"; };
 		01299B811E27593900A0A0D7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Test/ViewController.m; sourceTree = "<group>"; };
-		01299B821E27593900A0A0D7 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = Test/Base.lproj; sourceTree = "<group>"; };
 		01299B921E275B4900A0A0D7 /* TPGCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPGCollectionViewDataSource.h; path = Test/TPGCollectionViewDataSource.h; sourceTree = "<group>"; };
 		01299B931E275B4900A0A0D7 /* TPGCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPGCollectionViewDataSource.m; path = Test/TPGCollectionViewDataSource.m; sourceTree = "<group>"; };
 		01299B951E275B5F00A0A0D7 /* TPGCollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPGCollectionViewDelegate.h; path = Test/TPGCollectionViewDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +39,8 @@
 		01299B9D1E275E6100A0A0D7 /* TPGTestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPGTestCollectionViewCell.m; path = Test/TPGTestCollectionViewCell.m; sourceTree = "<group>"; };
 		01299B9F1E27673400A0A0D7 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = Test/SecondViewController.h; sourceTree = "<group>"; };
 		01299BA01E27673400A0A0D7 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = Test/SecondViewController.m; sourceTree = "<group>"; };
+		01299C0C1E2862E200A0A0D7 /* TPGHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPGHeaderView.h; path = Test/TPGHeaderView.h; sourceTree = "<group>"; };
+		01299C0D1E2862E200A0A0D7 /* TPGHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPGHeaderView.m; path = Test/TPGHeaderView.m; sourceTree = "<group>"; };
 		012FECBF1E1B4BAE0047D760 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,6 +66,8 @@
 				01299B931E275B4900A0A0D7 /* TPGCollectionViewDataSource.m */,
 				01299B9F1E27673400A0A0D7 /* SecondViewController.h */,
 				01299BA01E27673400A0A0D7 /* SecondViewController.m */,
+				01299C0C1E2862E200A0A0D7 /* TPGHeaderView.h */,
+				01299C0D1E2862E200A0A0D7 /* TPGHeaderView.m */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -82,7 +85,6 @@
 				01299B7F1E27593900A0A0D7 /* Main.storyboard */,
 				01299B801E27593900A0A0D7 /* ViewController.h */,
 				01299B811E27593900A0A0D7 /* ViewController.m */,
-				01299B821E27593900A0A0D7 /* Base.lproj */,
 				012FECC01E1B4BAE0047D760 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,7 +128,7 @@
 				TargetAttributes = {
 					012FECBE1E1B4BAE0047D760 = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -155,7 +157,6 @@
 			files = (
 				01299B861E27593900A0A0D7 /* LaunchScreen.storyboard in Resources */,
 				01299B851E27593900A0A0D7 /* Info.plist in Resources */,
-				01299B8A1E27593900A0A0D7 /* Base.lproj in Resources */,
 				01299B841E27593900A0A0D7 /* Assets.xcassets in Resources */,
 				01299B881E27593900A0A0D7 /* Main.storyboard in Resources */,
 			);
@@ -169,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01299B971E275B5F00A0A0D7 /* TPGCollectionViewDelegate.m in Sources */,
+				01299C0E1E2862E200A0A0D7 /* TPGHeaderView.m in Sources */,
 				01299B891E27593900A0A0D7 /* ViewController.m in Sources */,
 				01299B9E1E275E6100A0A0D7 /* TPGTestCollectionViewCell.m in Sources */,
 				01299BA11E27673400A0A0D7 /* SecondViewController.m in Sources */,
@@ -273,6 +275,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sumavision.Test;
@@ -284,6 +288,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sumavision.Test;

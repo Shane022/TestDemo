@@ -10,6 +10,10 @@
 #import "TPGCollectionViewDataSource.h"
 #import "TPGCollectionViewDelegate.h"
 #import "TPGTestCollectionViewCell.h"
+#import "TPGHeaderView.h"
+
+static NSString *const cellId = @"cellId";
+static NSString *const headerId = @"headerId";
 
 @interface SecondViewController ()
 
@@ -34,13 +38,31 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _arrDataSource = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
+    _arrDataSource = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8"];
+    
+    CGFloat labelWidth = 60;
+    CGFloat labelHeight = 40;
+
+    UIScrollView *baseView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, labelHeight)];
+    baseView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:baseView];
+    
+    for (int i = 0; i < _arrDataSource.count; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(i*labelWidth, 0, labelWidth, labelHeight);
+        [btn setTitle:[_arrDataSource objectAtIndex:i] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(onHitBtnScrollToDesignatedLocation:) forControlEvents:UIControlEventTouchUpInside];
+        [baseView addSubview:btn];
+    }
+    baseView.contentSize = CGSizeMake(labelWidth*_arrDataSource.count, baseView.contentSize.height);
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    _mainCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(baseView.frame), self.view.frame.size.width, self.view.frame.size.height-64-baseView.frame.size.height) collectionViewLayout:layout];
     _mainCollectionView.backgroundColor = [UIColor clearColor];
-    [_mainCollectionView registerClass:[TPGTestCollectionViewCell class] forCellWithReuseIdentifier:@"cellId"];
+    [_mainCollectionView registerClass:[TPGTestCollectionViewCell class] forCellWithReuseIdentifier:cellId];
+    [_mainCollectionView registerClass:[TPGHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
     _mainCollectionView.dataSource = self.dataSource;
     _mainCollectionView.delegate = self.delegate;
     [self.view addSubview:_mainCollectionView];
@@ -53,13 +75,12 @@
     [_alertLabel setFont:[UIFont systemFontOfSize:14.f]];
     _alertLabel.alpha = 0.0;
     [self.view addSubview:_alertLabel];
-
 }
 
 - (TPGCollectionViewDataSource *)dataSource
 {
     if (nil == _dataSource) {
-        _dataSource = [[TPGCollectionViewDataSource alloc] initWithDataSource:_arrDataSource cellIdentifier:@"cellId" headerViweIdentifier:@"headerId"];
+        _dataSource = [[TPGCollectionViewDataSource alloc] initWithDataSource:_arrDataSource cellIdentifier:cellId headerViweIdentifier:headerId];
     }
     return _dataSource;
 }
@@ -69,7 +90,7 @@
     if (nil == _delegate) {
         __weak typeof(self) weakSelf = self;
         _delegate = [[TPGCollectionViewDelegate alloc] initWithDataSource:_arrDataSource selectBlock:^(NSIndexPath *indexPath, UICollectionView *collectionView) {
-            [weakSelf showAlertWithTitle:[NSString stringWithFormat:@"curIdx %ld",indexPath.row]];
+            [weakSelf showAlertWithTitle:[NSString stringWithFormat:@"curIdx %ld",indexPath.section]];
         }];
     }
     return _delegate;
@@ -84,19 +105,19 @@
     }];
 }
 
+- (void)onHitBtnScrollToDesignatedLocation:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:[_arrDataSource indexOfObject:btn.titleLabel.text]];
+    UICollectionViewLayoutAttributes *attributes = [_mainCollectionView layoutAttributesForItemAtIndexPath:indexPath];
+    CGRect rect = attributes.frame;
+    CGFloat headerViewHeight = 40;
+    [_mainCollectionView setContentOffset:CGPointMake(_mainCollectionView.frame.origin.x, rect.origin.y - headerViewHeight-10) animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

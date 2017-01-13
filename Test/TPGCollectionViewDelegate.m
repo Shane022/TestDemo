@@ -36,6 +36,12 @@
     return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 40);
+    return size;
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.tapComplete(indexPath, collectionView);

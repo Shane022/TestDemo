@@ -8,6 +8,7 @@
 
 #import "TPGCollectionViewDataSource.h"
 #import "TPGTestCollectionViewCell.h"
+#import "TPGHeaderView.h"
 
 @implementation TPGCollectionViewDataSource
 
@@ -24,12 +25,12 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return _arrDataSource.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _arrDataSource.count;
+    return _arrDataSource.count-section;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -38,6 +39,13 @@
     [cell reloadTitle:[_arrDataSource objectAtIndex:indexPath.row]];
 
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    TPGHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:_headerViewId forIndexPath:indexPath];
+    [headerView reloadTitleName:[_arrDataSource objectAtIndex:indexPath.section]];
+    return headerView;
 }
 
 @end
