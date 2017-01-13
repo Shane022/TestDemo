@@ -30,13 +30,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+#if 0
     return _arrDataSource.count-section;
+#else
+    return 1;
+#endif
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TPGTestCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_cellId forIndexPath:indexPath];
-    [cell reloadTitle:[_arrDataSource objectAtIndex:indexPath.row]];
+    [cell reloadTitle:[_arrDataSource objectAtIndex:indexPath.section]];
 
     return cell;
 }

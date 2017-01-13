@@ -22,7 +22,7 @@
 - (void)setupComponent
 {
     self.backgroundColor = [UIColor lightGrayColor];
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 120, self.frame.size.height)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 120, self.frame.size.height-8*2)];
     _titleLabel.textColor = [UIColor blackColor];
     [self addSubview:_titleLabel];
 }
@@ -30,6 +30,7 @@
 - (void)reloadTitleName:(NSString *)titleName
 {
     _titleLabel.text = titleName;
+    [_titleLabel sizeToFit];
 }
 
 @end

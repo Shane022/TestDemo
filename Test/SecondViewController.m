@@ -38,24 +38,46 @@ static NSString *const headerId = @"headerId";
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _arrDataSource = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8"];
+    _arrDataSource = @[@"SourceTree",@"iterm",@"system preference setting",@"sublime text",@"launchpad",@"charles",@"finder",@"google chrome"];
     
-    CGFloat labelWidth = 60;
     CGFloat labelHeight = 40;
-
     UIScrollView *baseView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, labelHeight)];
     baseView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:baseView];
     
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(baseView.frame)-0.5, baseView.frame.size.width, 0.5)];
+    lineView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:lineView];
+    
+    CGFloat width = 0;
+    CGFloat marginX = 0;
+    CGFloat marginTop = 10;
+    CGFloat gap = 20;
     for (int i = 0; i < _arrDataSource.count; i++) {
+        NSString *str = [_arrDataSource objectAtIndex:i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i*labelWidth, 0, labelWidth, labelHeight);
-        [btn setTitle:[_arrDataSource objectAtIndex:i] forState:UIControlStateNormal];
+        btn.frame = CGRectMake(marginX, 0, width, labelHeight);
+        [btn setTitle:str forState:UIControlStateNormal];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [btn.titleLabel sizeToFit];
+        CGRect rect = btn.frame;
+        rect.size.width = btn.titleLabel.bounds.size.width;
+        [btn setFrame:rect];
+        width = rect.size.width+gap;
+        marginX += width;
+        btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(onHitBtnScrollToDesignatedLocation:) forControlEvents:UIControlEventTouchUpInside];
         [baseView addSubview:btn];
+        // 加一条分隔线
+        if (i == _arrDataSource.count-1) {
+            break;
+        }
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame)+gap/2, marginTop, 0.5, labelHeight-marginTop*2)];
+        lineView.backgroundColor = [UIColor grayColor];
+        [baseView addSubview:lineView];
     }
-    baseView.contentSize = CGSizeMake(labelWidth*_arrDataSource.count, baseView.contentSize.height);
+    baseView.contentSize = CGSizeMake(marginX, baseView.contentSize.height);
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
